@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Санапиро — контакты, адрес, телефон и часы работы." />
+    <title>Санапиро — контакты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@400;700&family=Montserrat+Alternates:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css?v=7" />
+<link rel="icon" href="assets/img/brand/favicon.ico" sizes="any" />
+<link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="assets/img/brand/favicon-16.png" type="image/png" sizes="16x16" />
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container">
+            <div class="topbar__inner">
+                <a class="brand" href="index.html" aria-label="Санапиро — на главную">
+          <img class="brand__logo" src="assets/img/brand/logo-horizontal.png" alt="Санапиро" />
+        </a>
+
+                <button class="burger" data-burger aria-label="Открыть меню">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <nav class="nav" data-nav>
+                    <a href="index.html">Главная</a>
+                    <a href="booking.html">Бронь столика</a>
+                    <a href="delivery.html">Доставка</a>
+                    <a href="contacts.html" class="is-active">Контакты</a>
+                </nav>
+
+
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" style="padding-bottom: 20px;">
+            <div class="container">
+                <h1 class="hero__title">Контакты</h1>
+                <p class="hero__subtitle">
+                    Мы всегда рады видеть вас. Приходите в гости или звоните, чтобы заказать столик.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="split">
+                    <div class="card">
+                        <h2 class="h2">Наши данные</h2>
+                        <dl class="kv" style="margin-top:20px;">
+                            <dt>Адрес</dt>
+                            <dd>г. ________, ул. ________, д. __</dd>
+
+                            <dt>Телефон</dt>
+                            <dd>+7 (___) ___-__-__</dd>
+
+                            <dt>Часы работы</dt>
+                            <dd>Ежедневно 12:00–23:00</dd>
+
+                            <dt>Email</dt>
+                            <dd><a href="mailto:info@sanapiro.ru">info@sanapiro.ru</a></dd>
+                        </dl>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card__title">Как добраться</h3>
+                        <p class="card__text" style="margin-bottom:20px;">
+                            Мы находимся в самом центре города. Рядом есть удобная парковка для гостей.
+                        </p>
+                        <!-- Placeholder for map -->
+                        <div
+                            style="background: var(--surface2); height: 200px; border-radius: var(--radius2); display: flex; align-items: center; justify-content: center; color: var(--muted);">
+                            Карта (Яндекс/Google)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="brand" style="margin-bottom: 10px;">
+            <img class="brand__logo" src="assets/img/brand/logo-horizontal-gold.png" alt="Санапиро" />
+          </div>
+                    <div class="small">
+                        © <span data-year></span> Санапиро. Ресторан грузинской кухни.
+                    </div>
+                </div>
+                <div>
+                    <div class="small">Быстрые ссылки</div>
+                    <div style="display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px;">
+                        <a class="btn btn--ghost" style="border-color:rgba(255,255,255,0.2); color:white;"
+                            href="booking.html">Бронь</a>
+                        <a class="btn btn--ghost" style="border-color:rgba(255,255,255,0.2); color:white;"
+                            href="delivery.html">Доставка</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" data-toast aria-live="polite" aria-atomic="true"></div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
