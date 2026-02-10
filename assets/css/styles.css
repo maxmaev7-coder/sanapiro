@@ -4,16 +4,21 @@
   --bg: #f8f6f2;
   --bg2: #ffffff;
   --surface: #ffffff;
-  --surface2: rgba(244, 220, 188, 0.35); /* #F4DCBC */
+  --surface2: rgba(244, 220, 188, 0.35);
+  /* #F4DCBC */
   --stroke: rgba(15, 21, 22, 0.12);
 
-  --text: #0f1516; /* #0F1516 */
-  --muted: #8d7366; /* #8D7366 */
+  --text: #0f1516;
+  /* #0F1516 */
+  --muted: #8d7366;
+  /* #8D7366 */
   --muted2: rgba(15, 21, 22, 0.55);
 
-  --accent: #580d29; /* #580D29 */
+  --accent: #580d29;
+  /* #580D29 */
   --accent-hover: #42081e;
-  --gold: #f4dcbc; /* #F4DCBC */
+  --gold: #f4dcbc;
+  /* #F4DCBC */
 
   /* UI helpers */
   --ok: #0f1516;
@@ -30,6 +35,7 @@
   --font-head: "Libertinus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -88,6 +94,7 @@ a:hover {
   border-bottom: 1px solid var(--stroke);
   box-shadow: 0 4px 12px rgba(15, 21, 22, 0.04);
 }
+
 .topbar__inner {
   display: flex;
   align-items: center;
@@ -107,6 +114,7 @@ a:hover {
   width: auto;
   display: block;
 }
+
 .brand__mark {
   width: 40px;
   height: 40px;
@@ -383,6 +391,7 @@ button.pill:hover {
   position: relative;
   z-index: 1;
 }
+
 .section__head {
   display: flex;
   justify-content: space-between;
@@ -939,6 +948,7 @@ button.pill:hover {
   mix-blend-mode: overlay;
   pointer-events: none;
 }
+
 .hero-main__content {
   position: relative;
   z-index: 2;
