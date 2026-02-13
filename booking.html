@@ -11,10 +11,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@400;700&family=Montserrat+Alternates:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=10" />
   <link rel="stylesheet" href="https://remarked.ru/widget/new/css/stylesheet.css">
   <link rel="stylesheet" href="https://remarked.ru/widget/new/points/548548/548548.css">
   <link rel="stylesheet" href="https://remarked.ru/widget/new/css/tables/Tables.widget.css">
-  <link rel="stylesheet" href="assets/css/styles.css?v=9" />
   <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any" />
   <link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="assets/img/brand/favicon-16.png" type="image/png" sizes="16x16" />
@@ -47,8 +47,8 @@
     </div>
   </header>
 
-  <main class="section" style="content-visibility: visible; contain-intrinsic-size: auto;">
-    <div class="container" style="max-width: 1300px; width: min(1300px, calc(100% - 40px));">
+  <main style="padding: 60px 0; content-visibility: visible;">
+    <div class="container">
       <div class="section__head">
         <div>
           <h1 class="h2" style="font-size: 26px; margin:0;">Бронирование столика</h1>
@@ -56,11 +56,11 @@
         </div>
         <a class="btn" href="index.html">← На главную</a>
       </div>
+    </div>
 
-      <!-- Remarked виджет: контейнер для встраивания -->
-      <section class="booking-widget" id="openReMarkedWidget">
-        <div class="ReservesWidgetRemarkedInlineContainer"></div>
-      </section>
+    <!-- Remarked виджет: контейнер для встраивания -->
+    <div id="openReMarkedWidget" style="max-width: 1440px; margin: 0 auto; padding: 0 20px; overflow-x: auto;">
+      <div class="ReservesWidgetRemarkedInlineContainer"></div>
     </div>
   </main>
 
