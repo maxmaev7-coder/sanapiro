@@ -1,4 +1,46 @@
 /* Санапиро — Brandbook Theme */
+
+/* --- Web Fonts (брендбук) --- */
+@font-face {
+  font-family: "Arnamu Serif";
+  src: url("../fonts/arnamu_serif.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arnamu Serif";
+  src: url("../fonts/arnamu_serif_bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alana Pro";
+  src: url("../fonts/Alana_Pro_RUS.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Brand palette (из брендбука) */
   --bg: #f8f6f2;
@@ -32,8 +74,9 @@
   --container: 1140px;
 
   /* Typography (из брендбука) */
-  --font-head: "Libertinus Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-body: "Montserrat Alternates", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-head: "Arnamu Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-accent: "Alana Pro", cursive;
 }
 
 * {
