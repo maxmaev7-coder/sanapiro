@@ -451,6 +451,10 @@ button.pill:hover {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.form-group {
+  margin-bottom: 20px;
+}
+
 .label {
   display: block;
   font-size: 13px;
