@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Санапиро — онлайн бронирование столиков по плану зала." />
+  <title>Санапиро — бронь столика</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@400;700&family=Montserrat+Alternates:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css?v=8" />
+  <link rel="stylesheet" href="https://remarked.ru/widget/new/css/stylesheet.css">
+  <link rel="stylesheet" href="https://remarked.ru/widget/new/points/548548/548548.css">
+  <link rel="stylesheet" href="https://remarked.ru/widget/new/css/tables/Tables.widget.css">
+  <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="assets/img/brand/favicon-16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar__inner">
+        <a class="brand" href="index.html" aria-label="Санапиро — на главную">
+          <img class="brand__logo" src="assets/img/brand/logo-horizontal.png" alt="Санапиро" />
+        </a>
+
+        <button class="burger" data-burger aria-label="Открыть меню">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav" data-nav>
+          <a href="index.html">Главная</a>
+          <a href="#openReMarkedWidget" class="is-active">Бронь столика</a>
+          <a href="delivery.html">Доставка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+
+
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h1 class="h2" style="font-size: 26px; margin:0;">Бронирование столика</h1>
+          <p class="p">Забронируйте столик онлайн.</p>
+        </div>
+        <a class="btn" href="index.html">← На главную</a>
+      </div>
+
+      <!-- Remarked виджет: контейнер для встраивания -->
+      <section class="section" id="openReMarkedWidget">
+        <div class="container">
+          <div class="ReservesWidgetRemarkedInlineContainer"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="brand" style="margin-bottom: 10px;">
+            <img class="brand__logo" src="assets/img/brand/logo-horizontal-gold.png" alt="Санапиро" />
+          </div>
+          <div class="small">
+            © <span data-year></span> Санапиро. Ресторан грузинской кухни.
+          </div>
+          <div class="small" style="margin-top: 12px;">
+            <a href="assets/docs/politika-personalnye-dannye.docx" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Политика конфиденциальности</a>
+            ·
+            <a href="assets/docs/soglasie-personalnye-dannye.doc" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Согласие на обработку персональных данных</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast aria-live="polite" aria-atomic="true"></div>
+
+  <div class="modal" data-modal aria-hidden="true">
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3 class="modal__title" data-modal-title>Готово</h3>
+        <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">×</button>
+      </div>
+      <div data-modal-body></div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top: 12px;">
+        <button class="btn" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://remarked.ru/widget/new/points/548548/config.548548.js"></script>
+  <script src="https://remarked.ru/widget/new/js/tables/newidget.js"></script>
+  <script src="https://remarked.ru/widget/new/js/tables/Tables.widget.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
