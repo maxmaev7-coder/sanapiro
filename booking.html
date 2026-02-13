@@ -12,6 +12,9 @@
     href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@400;700&family=Montserrat+Alternates:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css?v=8" />
+  <link rel="stylesheet" href="https://remarked.ru/widget/new/css/stylesheet.css">
+  <link rel="stylesheet" href="https://remarked.ru/widget/new/points/548548/548548.css">
+  <link rel="stylesheet" href="https://remarked.ru/widget/new/css/tables/Tables.widget.css">
   <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any" />
   <link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="assets/img/brand/favicon-16.png" type="image/png" sizes="16x16" />
@@ -34,10 +37,12 @@
 
         <nav class="nav" data-nav>
           <a href="index.html">Главная</a>
-          <a href="booking.html" class="is-active">Бронь столика</a>
+          <a href="#openReMarkedWidget" class="is-active">Бронь столика</a>
           <a href="delivery.html">Доставка</a>
           <a href="contacts.html">Контакты</a>
         </nav>
+
+
       </div>
     </div>
   </header>
@@ -47,198 +52,17 @@
       <div class="section__head">
         <div>
           <h1 class="h2" style="font-size: 26px; margin:0;">Бронирование столика</h1>
-          <p class="p">Шаг 1 — выберите стол на плане. Шаг 2 — укажите дату/время и данные гостя.</p>
+          <p class="p">Забронируйте столик онлайн.</p>
         </div>
-        <a class="btn" href="index.html">На главную</a>
+        <a class="btn" href="index.html">← На главную</a>
       </div>
 
-      <!-- JSON данные о столах (скрытый блок) -->
-      <script type="application/json" id="bookingTables">
-        [
-          {"id": "T1", "zone": "Зал", "capacity": 4},
-          {"id": "T2", "zone": "Зал", "capacity": 2},
-          {"id": "T3", "zone": "Зал", "capacity": 4},
-          {"id": "T4", "zone": "Зал", "capacity": 2},
-          {"id": "T5", "zone": "Зал", "capacity": 6},
-          {"id": "T6", "zone": "Зал", "capacity": 4},
-          {"id": "T7", "zone": "Зал", "capacity": 2},
-          {"id": "T8", "zone": "Зал", "capacity": 4},
-          {"id": "T9", "zone": "Зал", "capacity": 6},
-          {"id": "T10", "zone": "Зал", "capacity": 4}
-        ]
-      </script>
-
-      <div class="grid--2" style="gap: 32px; margin-top: 32px;">
-        <!-- Левая панель: План зала -->
-        <div>
-          <div class="plan">
-            <div class="plan__toolbar">
-              <div data-selected-pill style="font-size: 15px; color: var(--text);">
-                Выберите стол на плане <span class="small">(зелёные — свободны)</span>
-              </div>
-              <button class="btn btn--sm" type="button" data-reset>Сброс</button>
-            </div>
-            <div class="plan__canvas">
-              <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
-                <!-- Стены/фон -->
-                <g id="wall">
-                  <rect x="0" y="0" width="800" height="600" />
-                </g>
-
-                <!-- Бар -->
-                <g id="bar">
-                  <rect x="50" y="50" width="700" height="40" fill="#d4a574" stroke="#b8956a" stroke-width="2" />
-                  <text x="400" y="75" text-anchor="middle" fill="#5a3e2e" font-size="16" font-weight="600">БАР</text>
-                </g>
-
-                <!-- Столы -->
-                <g data-table="T1" style="cursor: pointer;">
-                  <rect x="100" y="150" width="80" height="60" rx="8" />
-                  <text x="140" y="185" text-anchor="middle" font-size="18" font-weight="600">1</text>
-                </g>
-
-                <g data-table="T2" style="cursor: pointer;">
-                  <circle cx="250" cy="180" r="35" />
-                  <text x="250" y="188" text-anchor="middle" font-size="18" font-weight="600">2</text>
-                </g>
-
-                <g data-table="T3" style="cursor: pointer;">
-                  <rect x="350" y="150" width="80" height="60" rx="8" />
-                  <text x="390" y="185" text-anchor="middle" font-size="18" font-weight="600">3</text>
-                </g>
-
-                <g data-table="T4" style="cursor: pointer;">
-                  <circle cx="500" cy="180" r="35" />
-                  <text x="500" y="188" text-anchor="middle" font-size="18" font-weight="600">4</text>
-                </g>
-
-                <g data-table="T5" style="cursor: pointer;">
-                  <rect x="600" y="130" width="100" height="80" rx="8" />
-                  <text x="650" y="175" text-anchor="middle" font-size="18" font-weight="600">5</text>
-                </g>
-
-                <g data-table="T6" style="cursor: pointer;">
-                  <rect x="100" y="280" width="80" height="60" rx="8" />
-                  <text x="140" y="315" text-anchor="middle" font-size="18" font-weight="600">6</text>
-                </g>
-
-                <g data-table="T7" style="cursor: pointer;">
-                  <circle cx="250" cy="310" r="35" />
-                  <text x="250" y="318" text-anchor="middle" font-size="18" font-weight="600">7</text>
-                </g>
-
-                <g data-table="T8" style="cursor: pointer;">
-                  <rect x="350" y="280" width="80" height="60" rx="8" />
-                  <text x="390" y="315" text-anchor="middle" font-size="18" font-weight="600">8</text>
-                </g>
-
-                <g data-table="T9" style="cursor: pointer;">
-                  <rect x="500" y="280" width="100" height="80" rx="8" />
-                  <text x="550" y="325" text-anchor="middle" font-size="18" font-weight="600">9</text>
-                </g>
-
-                <g data-table="T10" style="cursor: pointer;">
-                  <rect x="650" y="280" width="80" height="60" rx="8" />
-                  <text x="690" y="315" text-anchor="middle" font-size="18" font-weight="600">10</text>
-                </g>
-
-                <!-- Легенда -->
-                <g transform="translate(50, 450)">
-                  <text x="0" y="0" font-size="14" font-weight="600" fill="var(--text)">Легенда:</text>
-                  <g transform="translate(0, 25)">
-                    <rect x="0" y="-10" width="20" height="20" fill="rgba(84,214,111,.20)" stroke="rgba(84,214,111,.70)" stroke-width="2" />
-                    <text x="30" y="5" font-size="12" fill="var(--text)">свободно</text>
-                  </g>
-                  <g transform="translate(120, 25)">
-                    <rect x="0" y="-10" width="20" height="20" fill="rgba(255,78,78,.18)" stroke="rgba(255,78,78,.60)" stroke-width="2" />
-                    <text x="30" y="5" font-size="12" fill="var(--text)">занято</text>
-                  </g>
-                  <g transform="translate(200, 25)">
-                    <rect x="0" y="-10" width="20" height="20" fill="rgba(255,196,46,.28)" stroke="rgba(255,196,46,.80)" stroke-width="2" />
-                    <text x="30" y="5" font-size="12" fill="var(--text)">выбрано</text>
-                  </g>
-                </g>
-              </svg>
-            </div>
-          </div>
+      <!-- Remarked виджет: контейнер для встраивания -->
+      <section class="section" id="openReMarkedWidget">
+        <div class="container">
+          <div class="ReservesWidgetRemarkedInlineContainer"></div>
         </div>
-
-        <!-- Правая панель: Форма бронирования -->
-        <div>
-          <div class="form-card" style="background: var(--bg2); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);">
-            <h2 class="h3" style="margin-top: 0; margin-bottom: 16px;">Детали бронирования</h2>
-            <p class="small" style="margin-bottom: 24px; color: var(--muted);">
-              После отправки заявка покажется в модальном окне (демо).
-            </p>
-
-            <form data-booking-form>
-              <div class="form-group">
-                <label class="label" for="date">ДАТА</label>
-                <input class="input" type="date" id="date" name="date" required />
-              </div>
-
-              <div class="form-group">
-                <label class="label" for="time">ВРЕМЯ</label>
-                <select class="input" id="time" name="time" required>
-                  <!-- Заполняется через JS -->
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="label" for="guests">ГОСТЕЙ</label>
-                <input class="input" type="number" id="guests" name="guests" min="1" max="10" value="2" required />
-              </div>
-
-              <div class="form-group">
-                <label class="label" for="occasion">ПОВОД</label>
-                <select class="input" id="occasion" name="occasion">
-                  <option value="">Без повода</option>
-                  <option value="День рождения">День рождения</option>
-                  <option value="Юбилей">Юбилей</option>
-                  <option value="Свидание">Свидание</option>
-                  <option value="Деловая встреча">Деловая встреча</option>
-                  <option value="Семейный ужин">Семейный ужин</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label class="label" for="name">ИМЯ</label>
-                <input class="input" type="text" id="name" name="name" placeholder="Например, Амин" required />
-              </div>
-
-              <div class="form-group">
-                <label class="label" for="phone">ТЕЛЕФОН</label>
-                <input class="input" type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required />
-                <p class="small" style="margin-top: 6px; color: var(--muted);">
-                  Нужен для подтверждения брони.
-                </p>
-              </div>
-
-              <div class="form-group">
-                <label class="label" for="comment">КОММЕНТАРИЙ</label>
-                <textarea class="input textarea" id="comment" name="comment" rows="4" placeholder="Пожелания по посадке, детский стул и т.д."></textarea>
-              </div>
-
-              <div class="checkbox" style="margin-bottom: 24px;">
-                <input type="checkbox" id="consent" name="consent" required />
-                <label for="consent" style="cursor: pointer;">
-                  Согласен(на) на обработку персональных данных.
-                </label>
-              </div>
-
-              <button class="btn btn--block" type="submit" style="background: var(--accent); color: white;">
-                Отправить заявку
-              </button>
-            </form>
-
-            <div style="margin-top: 24px; padding: 16px; background: #fff9e6; border: 2px solid var(--accent); border-radius: 8px;">
-              <p class="small" style="margin: 0; color: var(--text);">
-                <strong>Важно:</strong> в прототипе занятость столов генерируется псевдослучайно (демо). При подключении API (например, сервиса бронирования) эти данные будут приходить с сервера.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   </main>
 
@@ -258,6 +82,7 @@
             <a href="assets/docs/soglasie-personalnye-dannye.doc" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Согласие на обработку персональных данных</a>
           </div>
         </div>
+
       </div>
     </div>
   </footer>
@@ -277,8 +102,10 @@
     </div>
   </div>
 
+  <script src="https://remarked.ru/widget/new/points/548548/config.548548.js"></script>
+  <script src="https://remarked.ru/widget/new/js/tables/newidget.js"></script>
+  <script src="https://remarked.ru/widget/new/js/tables/Tables.widget.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/booking.js"></script>
 </body>
 
 </html>
