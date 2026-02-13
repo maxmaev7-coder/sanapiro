@@ -1368,3 +1368,66 @@ button.pill:hover {
   font-size: 14px;
   text-align: center;
 }
+
+/* --- Booking widget (ReMarked) fix --- */
+.booking-widget {
+  padding: 0;
+  content-visibility: visible;
+  contain-intrinsic-size: auto;
+}
+
+/* Allow the widget wrapper to expand beyond the default container */
+.ReservesWidgetRemarkedInlineContainer {
+  width: 100%;
+  overflow: visible;
+}
+
+/* The widget sets 1400px width — let it scale to available space */
+.remarked-primary-widget__wrap--tables .remarked-primary-widget {
+  width: 100% !important;
+  padding-right: 0 !important;
+}
+
+/* Give the form column a fixed but reasonable width */
+.remarked-primary-widget__wrap--tables .remarked-primary-widget__container {
+  flex: 0 0 420px !important;
+}
+
+/* Table map: fill the remaining space and don't clip */
+.remarked-primary-widget__wrap--tables .remarked-primary-widget__tables {
+  width: calc(100% - 450px) !important;
+  overflow: auto !important;
+  margin-left: 20px !important;
+}
+
+/* Ensure the inner map scrolls if content is larger */
+.remarked-primary-widget__map {
+  overflow: auto !important;
+}
+
+@media (max-width: 1100px) {
+  .remarked-primary-widget__wrap--tables .remarked-primary-widget__container {
+    flex: 0 0 380px !important;
+  }
+
+  .remarked-primary-widget__wrap--tables .remarked-primary-widget__tables {
+    width: calc(100% - 410px) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .remarked-primary-widget__wrap--tables .remarked-primary-widget {
+    display: block !important;
+  }
+
+  .remarked-primary-widget__wrap--tables .remarked-primary-widget__container {
+    flex: unset !important;
+    width: 100% !important;
+  }
+
+  .remarked-primary-widget__wrap--tables .remarked-primary-widget__tables {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 20px !important;
+  }
+}
