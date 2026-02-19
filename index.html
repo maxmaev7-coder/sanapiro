@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Санапиро — ресторан. Бронь столов и доставка. Меню в PDF." />
+  <title>Санапиро — ресторан</title>
+  <link rel="stylesheet" href="assets/css/styles.css?v=11" />
+  <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="assets/img/brand/favicon-16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png" />
+  <link rel="preload" as="image" href="assets/img/webp/hero-1.webp" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar__inner">
+        <a class="brand" href="index.html" aria-label="Санапиро — на главную">
+          <img class="brand__logo" src="assets/img/brand/logo-horizontal.png" alt="Санапиро" />
+        </a>
+
+        <button class="burger" data-burger aria-label="Открыть меню">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav" data-nav>
+          <a href="index.html" class="is-active">Главная</a>
+          <a href="booking.html">Бронь столика</a>
+          <a href="delivery.html">Доставка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: слайдер живых фото + основные CTA -->
+    <section class="hero-main">
+      <div class="hero-main__slider" data-hero-slider aria-hidden="true">
+        <div class="hero-main__slide is-active" data-slide style="background-image:url('assets/img/webp/hero-1.webp')">
+        </div>
+        <div class="hero-main__slide" data-slide data-bg="assets/img/hero-dark.jpg" data-bg-mode="hero"></div>
+        <div class="hero-main__slide" data-slide data-bg="assets/img/webp/hero-3.webp" data-bg-mode="hero"></div>
+
+        <div class="hero-main__overlay"></div>
+        <div class="hero-dots" data-hero-dots></div>
+      </div>
+
+      <div class="container">
+        <div class="hero-main__content">
+          <div class="hero-main__crumbs">Главная · Ресторан</div>
+          <div class="hero-main__mark" aria-hidden="true">
+            <img src="assets/img/brand/logo-mark-gold.png" alt="" />
+          </div>
+          <h1 class="hero-main__title">Санапиро</h1>
+          <p class="hero-main__subtitle">
+            Сочетание лучших традиций <b>грузинской кухни</b> и <b>европейской классики</b>.
+            Наслаждайтесь атмосферой уюта в нашем ресторане или заказывайте любимые блюда с доставкой на дом.
+          </p>
+
+          <div class="hero-main__chips" aria-label="Особенности">
+            <span class="chip">Грузинская кухня</span>
+            <span class="chip">Европейская кухня</span>
+            <span class="chip">Бар</span>
+          </div>
+
+          <div class="hero-main__actions">
+            <!-- Buttons removed as requested -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head" style="text-align: center; justify-content: center; margin-bottom: 20px;">
+          <div>
+            <h2 class="h2" style="font-size: 48px; margin-bottom: 20px;">О ресторане</h2>
+          </div>
+        </div>
+
+        <div style="max-width: 840px; margin: 0 auto; text-align: center;">
+          <p
+            style="font-size: 20px; line-height: 1.7; color: var(--text); font-family: var(--font-body); margin-bottom: 24px;">
+            «Санапиро» — это пространство, где <b>грузинское гостеприимство</b> встречается с <b>европейской
+              утонченностью</b>.
+            Мы создали это место для тех, кто ценит вкус к жизни, душевные разговоры и настоящую еду.
+          </p>
+          <p style="font-size: 20px; line-height: 1.7; color: var(--text); font-family: var(--font-body);">
+            Каждое блюдо в нашем меню — это история, рассказанная с любовью.
+            Погрузитесь в атмосферу тепла, уюта и гастрономического удовольствия.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PDF MENU (как на prokhinkali: карточки + кнопка PDF) -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2 class="h2">Меню</h2>
+            <p class="p">Открывается в новой вкладке — удобно на телефоне.</p>
+          </div>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <div class="carousel__track" data-carousel-track>
+            <a class="menu-card" href="assets/pdf/menu-georgia.pdf" target="_blank" rel="noopener">
+              <div class="menu-card__img" data-bg="assets/img/webp/menu-georgia.webp"></div>
+              <div class="menu-card__foot">
+                <h3 class="menu-card__title">Грузинская кухня</h3>
+                <span class="menu-card__pdf">PDF</span>
+              </div>
+            </a>
+
+            <a class="menu-card" href="assets/pdf/menu-europe.pdf" target="_blank" rel="noopener">
+              <div class="menu-card__img" data-bg="assets/img/webp/menu-europe.webp"></div>
+              <div class="menu-card__foot">
+                <h3 class="menu-card__title">Европейская кухня</h3>
+                <span class="menu-card__pdf">PDF</span>
+              </div>
+            </a>
+
+            <a class="menu-card" href="assets/pdf/bar-menu.pdf" target="_blank" rel="noopener">
+              <div class="menu-card__img" data-bg="assets/img/webp/menu-bar.webp"></div>
+              <div class="menu-card__foot">
+                <h3 class="menu-card__title">Барное меню</h3>
+                <span class="menu-card__pdf">PDF</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="carousel__controls">
+            <button class="carousel__btn" type="button" data-carousel-prev aria-label="Назад">‹</button>
+            <button class="carousel__btn" type="button" data-carousel-next aria-label="Вперёд">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <h2 class="h2">Галерея</h2>
+            <p class="p">Живые фото — свайпайте или листайте стрелками.</p>
+          </div>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <div class="gallery__track carousel__track" data-carousel-track>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-14.webp"
+              data-bg="assets/img/webp/gallery-14.webp" data-caption="Вид с террасы"
+              aria-label="Открыть фото: вид с террасы"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-6.webp"
+              data-bg="assets/img/webp/hero-3.webp" data-caption="Интерьер"
+              aria-label="Открыть фото: интерьер"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-9.webp"
+              data-bg="assets/img/webp/gallery-9.webp" data-caption="Зал" aria-label="Открыть фото: зал"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-5.webp"
+              data-bg="assets/img/webp/gallery-5.webp" data-caption="Команда"
+              aria-label="Открыть фото: команда"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/hero-2.webp"
+              data-bg="assets/img/webp/hero-2.webp" data-caption="Хиты кухни"
+              aria-label="Открыть фото: хиты кухни"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-7.webp"
+              data-bg="assets/img/webp/gallery-7.webp" data-caption="Блюдо" aria-label="Открыть фото: блюдо"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-1.webp"
+              data-bg="assets/img/webp/gallery-1.webp" data-caption="Подача" aria-label="Открыть фото: подача"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-8.webp"
+              data-bg="assets/img/webp/gallery-8.webp" data-caption="Детали"
+              aria-label="Открыть фото: детали интерьера"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-13.webp"
+              data-bg="assets/img/webp/gallery-13.webp" data-caption="Бар" aria-label="Открыть фото: бар"></button>
+            <button class="gallery__item" data-lightbox="assets/img/webp/gallery-12.webp"
+              data-bg="assets/img/webp/gallery-12.webp" data-caption="Атмосфера"
+              aria-label="Открыть фото: атмосфера"></button>
+          </div>
+
+          <div class="carousel__controls">
+            <button class="carousel__btn" type="button" data-carousel-prev aria-label="Назад">‹</button>
+            <button class="carousel__btn" type="button" data-carousel-next aria-label="Вперёд">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- TEAM -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2 class="h2">Наша команда</h2>
+          <p class="p">Люди, которые создают для вас праздник каждый день.</p>
+        </div>
+      </div>
+
+      <div class="split" style="align-items: center;">
+        <div style="display: grid; gap: 24px;">
+          <p style="font-size: 18px; line-height: 1.6; color: var(--text);">
+            В сердце «Санапиро» — команда профессионалов, влюбленных в своё дело.
+            Наши повара — хранители старинных рецептов, которые знают секрет идеального хачапури и правильных хинкали.
+          </p>
+          <p style="font-size: 18px; line-height: 1.6; color: var(--muted);">
+            Мы верим, что вкусная еда начинается с добрых рук. Официанты, бармены и управляющие —
+            все мы работаем как единый организм, чтобы вы чувствовали себя как дома с первой минуты.
+          </p>
+        </div>
+        <div class="grid grid--2">
+          <img class="team__img" src="assets/img/webp/gallery-2.webp" width="1400" height="2100" loading="lazy"
+            decoding="async" alt="Команда Санапиро — сервис" />
+          <img class="team__img team__img--offset" src="assets/img/webp/gallery-4.webp" width="1400" height="2100"
+            loading="lazy" decoding="async" alt="Команда Санапиро — атмосфера" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="brand" style="margin-bottom: 10px;">
+            <img class="brand__logo" src="assets/img/brand/logo-horizontal-gold.png" alt="Санапиро" />
+          </div>
+          <div class="small">© <span data-year></span> Ресторан «Санапиро». Все права защищены.</div>
+          <div class="small" style="margin-top: 12px;">
+            <a href="assets/docs/politika-personalnye-dannye.docx" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Политика конфиденциальности</a>
+            ·
+            <a href="assets/docs/soglasie-personalnye-dannye.doc" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Согласие на обработку персональных данных</a>
+          </div>
+        </div>
+        <div>
+          <div class="small">Быстрые ссылки</div>
+          <div style="display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px;">
+            <a class="btn" href="booking.html">Резерв</a>
+            <a class="btn" href="delivery.html">Доставка</a>
+            <a class="btn" href="contacts.html">Контакты</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- toast -->
+  <div class="toast" data-toast aria-live="polite" aria-atomic="true"></div>
+
+  <!-- cookie (ненавязчивое всплывающее окно) -->
+  <div class="cookie" data-cookie>
+    <div class="cookie__text">
+      Сайт использует файлы cookie, продолжая пользоваться сайтом, вы даёте согласие на их хранение и обработку.
+      Подробнее — в <a href="assets/docs/politika-personalnye-dannye.docx" target="_blank" rel="noopener">политике конфиденциальности</a>.
+      При необходимости вы можете отключить cookie в настройках браузера.
+    </div>
+    <div class="cookie__actions">
+      <button class="btn cookie__btn" type="button" data-cookie-accept>Понятно</button>
+    </div>
+  </div>
+
+  <!-- lightbox -->
+  <div class="lightbox" data-lightbox-modal aria-hidden="true">
+    <div class="lightbox__panel">
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть">×</button>
+      <img class="lightbox__img" data-lightbox-img alt="" />
+    </div>
+  </div>
+
+  <script src="assets/js/main.js?v=2"></script>
+</body>
+
+</html>

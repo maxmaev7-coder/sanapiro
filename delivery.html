@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Санапиро — доставка. Меню, корзина и оформление заказа." />
+  <title>Санапиро — доставка</title>
+  <link rel="stylesheet" href="assets/css/styles.css?v=11" />
+<link rel="icon" href="assets/img/brand/favicon.ico" sizes="any" />
+<link rel="icon" href="assets/img/brand/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="assets/img/brand/favicon-16.png" type="image/png" sizes="16x16" />
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar__inner">
+        <a class="brand" href="index.html" aria-label="Санапиро — на главную">
+          <img class="brand__logo" src="assets/img/brand/logo-horizontal.png" alt="Санапиро" />
+        </a>
+
+        <button class="burger" data-burger aria-label="Открыть меню">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <nav class="nav" data-nav>
+          <a href="index.html">Главная</a>
+          <a href="booking.html">Бронь столика</a>
+          <a href="delivery.html" class="is-active">Доставка</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+
+        <div class="topbar__actions">
+          <a class="pill" href="#cart" title="Перейти к корзине">Корзина: <b data-cart-count>0</b></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h1 class="h2" style="font-size: 26px; margin:0;">Доставка</h1>
+          <p class="p">Выберите блюда, добавьте в корзину и оформите заказ.</p>
+        </div>
+        <a class="btn" href="index.html">← На главную</a>
+      </div>
+
+      <div class="delivery" style="grid-template-columns: 1fr;">
+        <section>
+          <div class="card" style="margin-bottom: 14px;">
+            <div class="section__head" style="margin-bottom: 10px;">
+              <div>
+                <h2 class="h2" style="margin:0;">Меню</h2>
+              </div>
+            </div>
+            <div class="tabs" data-cuisine-tabs></div>
+            <div class="tabs" data-tabs style="margin-top: 10px;"></div>
+          </div>
+
+          <div class="menu" data-menu></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="brand" style="margin-bottom: 10px;">
+            <img class="brand__logo" src="assets/img/brand/logo-horizontal-gold.png" alt="Санапиро" />
+          </div>
+          <div class="small">
+            © <span data-year></span> Санапиро. Ресторан грузинской кухни.
+          </div>
+          <div class="small" style="margin-top: 12px;">
+            <a href="assets/docs/politika-personalnye-dannye.docx" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Политика конфиденциальности</a>
+            ·
+            <a href="assets/docs/soglasie-personalnye-dannye.doc" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Согласие на обработку персональных данных</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Generic Message Modal -->
+  <div class="modal" data-modal aria-hidden="true">
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3 class="modal__title" data-modal-title>Готово</h3>
+        <button class="modal__close" type="button" data-modal-close aria-label="Закрыть">×</button>
+      </div>
+      <div data-modal-body></div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top: 12px;">
+        <button class="btn" type="button" data-modal-close>Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="modal" id="cart-modal" aria-hidden="true" style="z-index: 1000;">
+    <div class="modal__panel" style="max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto;">
+      <div class="modal__head"
+        style="position: sticky; top: -24px; background: white; z-index: 1; padding-bottom: 10px; border-bottom: 1px solid var(--stroke); margin: -24px -24px 20px -24px; padding: 20px 24px;">
+        <h2 class="h2" style="margin:0; font-size: 24px;">Корзина</h2>
+        <button class="modal__close" type="button"
+          onclick="document.getElementById('cart-modal').classList.remove('is-open')" aria-label="Закрыть">×</button>
+      </div>
+
+      <div class="cart__head" style="display:flex; justify-content:space-between; margin-bottom: 20px;">
+        <div></div>
+        <button class="btn btn--ghost" style="padding: 6px 12px; font-size: 13px;" type="button"
+          onclick="localStorage.removeItem('sanapiro_cart'); location.reload();">Очистить корзину</button>
+      </div>
+
+      <div class="cart__items" data-cart-items></div>
+      <div data-totals></div>
+
+      <hr class="hr" />
+
+      <h3 class="card__title" style="margin-top:0;">Оформление</h3>
+
+      <form class="form" data-checkout-form>
+        <div class="field">
+          <label class="label">Способ</label>
+          <div style="display:flex; gap: 10px; flex-wrap:wrap;">
+            <label class="checkbox" style="align-items:center;">
+              <input type="radio" name="method" value="delivery" checked />
+              <span>Доставка</span>
+            </label>
+            <label class="checkbox" style="align-items:center;">
+              <input type="radio" name="method" value="pickup" />
+              <span>Самовывоз</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label class="label" for="cname">Имя</label>
+            <input class="input" id="cname" name="name" placeholder="Например, Данил" required />
+          </div>
+          <div class="field">
+            <label class="label" for="cphone">Телефон</label>
+            <input class="input" id="cphone" name="phone" placeholder="+7 (___) ___-__-__" inputmode="tel" required />
+          </div>
+        </div>
+
+        <div class="field" data-address-block>
+          <label class="label" for="street">Адрес доставки</label>
+          <input class="input" id="street" name="street" placeholder="Улица, дом, квартира" />
+          <div class="row--3" style="margin-top: 10px;">
+            <input class="input" name="entrance" placeholder="Подъезд" />
+            <input class="input" name="floor" placeholder="Этаж" />
+            <input class="input" name="apt" placeholder="Кв." />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label class="label" for="pay">Оплата</label>
+            <select class="select" id="pay" name="pay">
+              <option value="card">Картой</option>
+              <option value="cash">Наличными</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="label" for="desiredTime">Время</label>
+            <select class="select" id="desiredTime" name="desiredTime">
+              <option value="asap">Как можно быстрее</option>
+              <option value="time">Ко времени (укажем по телефону)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="ccomment">Комментарий</label>
+          <textarea class="textarea" id="ccomment" name="comment"
+            placeholder="Например: домофон не работает, позвоните."></textarea>
+        </div>
+
+        <button class="btn btn--accent" style="width: 100%; justify-content: center; margin-top: 10px;"
+          type="submit">Оформить заказ</button>
+
+
+      </form>
+    </div>
+  </div>
+
+  <script id="menuData" type="application/json">
+{
+  "cuisines": [
+    {
+      "id": "georgia",
+      "title": "Грузинская кухня",
+      "categories": [
+        {
+          "id": "garnish",
+          "title": "Гарниры",
+          "items": [
+            {
+              "id": "geo_garnish_001",
+              "name": "Картофель по-домашнему",
+              "price": 260,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_garnish_002",
+              "name": "Картофель фри",
+              "price": 240,
+              "weight": "150/30 г"
+            },
+            {
+              "id": "geo_garnish_003",
+              "name": "Картофельное пюре",
+              "price": 230,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_garnish_004",
+              "name": "Картофельное пюре с сыром",
+              "price": 380,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_garnish_005",
+              "name": "Рис басмати",
+              "price": 220,
+              "weight": "150 г"
+            }
+          ]
+        },
+        {
+          "id": "hot",
+          "title": "Горячее",
+          "items": [
+            {
+              "id": "geo_hot_001",
+              "name": "Долма",
+              "price": 760,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_hot_002",
+              "name": "Креветки чкмерули",
+              "price": 960,
+              "weight": "250/50 г"
+            },
+            {
+              "id": "geo_hot_003",
+              "name": "Оджахури с грибами",
+              "price": 520,
+              "weight": "300 г"
+            },
+            {
+              "id": "geo_hot_004",
+              "name": "Оджахури с курицей",
+              "price": 570,
+              "weight": "350 г"
+            },
+            {
+              "id": "geo_hot_005",
+              "name": "Оджахури со свининой",
+              "price": 630,
+              "weight": "350 г"
+            },
+            {
+              "id": "geo_hot_006",
+              "name": "Свиные ребра с тахмиджами",
+              "price": 870,
+              "weight": "200/50 г"
+            },
+            {
+              "id": "geo_hot_007",
+              "name": "Солянка по-грузински",
+              "price": 540,
+              "weight": "300 г"
+            },
+            {
+              "id": "geo_hot_008",
+              "name": "Цыпленок табака",
+              "price": 870,
+              "weight": "1 шт / 300 г"
+            },
+            {
+              "id": "geo_hot_009",
+              "name": "Цыпленок табака чкмерули",
+              "price": 999,
+              "weight": "1 шт / 400 г"
+            },
+            {
+              "id": "geo_hot_010",
+              "name": "Чахохбили",
+              "price": 580,
+              "weight": "300 г"
+            },
+            {
+              "id": "geo_hot_011",
+              "name": "Чашушули",
+              "price": 720,
+              "weight": "300 г"
+            }
+          ]
+        },
+        {
+          "id": "hot_snacks",
+          "title": "Горячие закуски",
+          "items": [
+            {
+              "id": "geo_hsn_001",
+              "name": "Лобио по-имеретински",
+              "price": 480,
+              "weight": "300/70 г"
+            },
+            {
+              "id": "geo_hsn_002",
+              "name": "Сыр жареный с помидорами",
+              "price": 480,
+              "weight": "250 г"
+            },
+            {
+              "id": "geo_hsn_003",
+              "name": "Сыр жареный с соусом брусничным",
+              "price": 520,
+              "weight": "150/30 г"
+            }
+          ]
+        },
+        {
+          "id": "cold_snacks",
+          "title": "Холодные закуски",
+          "items": [
+            {
+              "id": "geo_csn_001",
+              "name": "Аджапсандали",
+              "price": 520,
+              "weight": "250 г"
+            },
+            {
+              "id": "geo_csn_002",
+              "name": "Ассорти грузинских сыров",
+              "price": 870,
+              "weight": "300/30 г"
+            },
+            {
+              "id": "geo_csn_003",
+              "name": "Ассорти пхали",
+              "price": 520,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_csn_004",
+              "name": "Ассорти свежих овощей",
+              "price": 690,
+              "weight": "350 г"
+            },
+            {
+              "id": "geo_csn_005",
+              "name": "Ассорти солений",
+              "price": 650,
+              "weight": "350 г"
+            },
+            {
+              "id": "geo_csn_006",
+              "name": "Баклажаны с орехами",
+              "price": 430,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_csn_007",
+              "name": "Баклажаны с творогом",
+              "price": 410,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_csn_008",
+              "name": "Говяжий язык с хреном",
+              "price": 920,
+              "weight": "120/30 г"
+            },
+            {
+              "id": "geo_csn_009",
+              "name": "Джонджоли",
+              "price": 450,
+              "weight": "120 г"
+            },
+            {
+              "id": "geo_csn_010",
+              "name": "Капрезе по-грузински",
+              "price": 670,
+              "weight": "180 г"
+            },
+            {
+              "id": "geo_csn_011",
+              "name": "Оливье по-грузински",
+              "price": 420,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_csn_012",
+              "name": "Пхали зеленые",
+              "price": 370,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_csn_013",
+              "name": "Пхали свекла",
+              "price": 370,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_csn_014",
+              "name": "Пхали шпинат",
+              "price": 430,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_csn_015",
+              "name": "Сациви из курицы",
+              "price": 580,
+              "weight": "250 г"
+            }
+          ]
+        },
+        {
+          "id": "soups",
+          "title": "Супы",
+          "items": [
+            {
+              "id": "geo_soup_001",
+              "name": "Борщ",
+              "price": 420,
+              "weight": "350/50 г"
+            },
+            {
+              "id": "geo_soup_002",
+              "name": "Крем-суп грибной",
+              "price": 440,
+              "weight": "300/30 г"
+            },
+            {
+              "id": "geo_soup_003",
+              "name": "Куриный суп с лапшой",
+              "price": 330,
+              "weight": "350 г"
+            },
+            {
+              "id": "geo_soup_004",
+              "name": "Харчо",
+              "price": 540,
+              "weight": "350 г"
+            },
+            {
+              "id": "geo_soup_005",
+              "name": "Чихиртма",
+              "price": 380,
+              "weight": "350 г"
+            }
+          ]
+        },
+        {
+          "id": "salads",
+          "title": "Салаты",
+          "items": [
+            {
+              "id": "geo_sal_001",
+              "name": "Салат овощной по-грузински",
+              "price": 480,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_sal_002",
+              "name": "Салат овощной с орехами",
+              "price": 520,
+              "weight": "250 г"
+            },
+            {
+              "id": "geo_sal_003",
+              "name": "Салат с говяжьим языком",
+              "price": 860,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_sal_004",
+              "name": "Салат с куриной печенью",
+              "price": 780,
+              "weight": "250 г"
+            },
+            {
+              "id": "geo_sal_005",
+              "name": "Салат с хрустящими баклажанами",
+              "price": 620,
+              "weight": "250 г"
+            },
+            {
+              "id": "geo_sal_006",
+              "name": "Цезаридзе с люля из курицы",
+              "price": 780,
+              "weight": "300 г"
+            }
+          ]
+        },
+        {
+          "id": "grill",
+          "title": "Мангал",
+          "items": [
+            {
+              "id": "geo_grill_001",
+              "name": "Грибы на мангале",
+              "price": 330,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_grill_002",
+              "name": "Дорадо на гриле",
+              "price": 1200,
+              "weight": "1 шт"
+            },
+            {
+              "id": "geo_grill_003",
+              "name": "Каре барашка",
+              "price": 1600,
+              "weight": "200/80 г"
+            },
+            {
+              "id": "geo_grill_004",
+              "name": "Картофель бэби на гриле",
+              "price": 220,
+              "weight": "220 г"
+            },
+            {
+              "id": "geo_grill_005",
+              "name": "Лосось на гриле",
+              "price": 1200,
+              "weight": "120/50 г"
+            },
+            {
+              "id": "geo_grill_006",
+              "name": "Люля из баранины",
+              "price": 860,
+              "weight": "170/50 г"
+            },
+            {
+              "id": "geo_grill_007",
+              "name": "Люля из говядины и свинины",
+              "price": 780,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_grill_008",
+              "name": "Люля из курицы",
+              "price": 620,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_grill_009",
+              "name": "Люля из курицы с сыром",
+              "price": 620,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_grill_010",
+              "name": "Овощи на гриле",
+              "price": 350,
+              "weight": "300 г"
+            },
+            {
+              "id": "geo_grill_011",
+              "name": "Шашлык из барашка",
+              "price": 1260,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_grill_012",
+              "name": "Шашлык из курицы",
+              "price": 570,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_grill_013",
+              "name": "Шашлык из свиной шейки",
+              "price": 670,
+              "weight": "180/50 г"
+            }
+          ]
+        },
+        {
+          "id": "bakery",
+          "title": "Хачапури и хлеб",
+          "items": [
+            {
+              "id": "geo_bake_001",
+              "name": "Кубдари",
+              "price": 680,
+              "weight": "170/50 г"
+            },
+            {
+              "id": "geo_bake_002",
+              "name": "Лаваш",
+              "price": 90,
+              "weight": "180/50 г"
+            },
+            {
+              "id": "geo_bake_003",
+              "name": "Мчади",
+              "price": 320,
+              "weight": "210 г"
+            },
+            {
+              "id": "geo_bake_004",
+              "name": "Хачапури по-имеретински",
+              "price": 580,
+              "weight": "420 г"
+            },
+            {
+              "id": "geo_bake_005",
+              "name": "Хачапури по-аджарски",
+              "price": 620,
+              "weight": "300 г"
+            },
+            {
+              "id": "geo_bake_006",
+              "name": "Хачапури по-мегрельски",
+              "price": 620,
+              "weight": "450 г"
+            },
+            {
+              "id": "geo_bake_007",
+              "name": "Хачапури по-мегрельски царский",
+              "price": 760,
+              "weight": "500 г"
+            },
+            {
+              "id": "geo_bake_008",
+              "name": "Чвиштари",
+              "price": 380,
+              "weight": "200 г"
+            }
+          ]
+        },
+        {
+          "id": "khinkali",
+          "title": "Хинкали",
+          "items": [
+            {
+              "id": "geo_kh_001",
+              "name": "Хинкали баранина",
+              "price": 140,
+              "weight": "90 г / шт"
+            },
+            {
+              "id": "geo_kh_002",
+              "name": "Хинкали говядина",
+              "price": 130,
+              "weight": "90 г / шт"
+            },
+            {
+              "id": "geo_kh_003",
+              "name": "Хинкали с грибами",
+              "price": 130,
+              "weight": "90 г / шт"
+            },
+            {
+              "id": "geo_kh_004",
+              "name": "Хинкали с сыром",
+              "price": 130,
+              "weight": "90 г / шт"
+            },
+            {
+              "id": "geo_kh_005",
+              "name": "Хинкали с говядиной, свининой и зеленью",
+              "price": 130,
+              "weight": "90 г / шт"
+            }
+          ]
+        },
+        {
+          "id": "desserts",
+          "title": "Десерты",
+          "items": [
+            {
+              "id": "geo_des_001",
+              "name": "Мацони с орехами и медом",
+              "price": 350,
+              "weight": "250 г"
+            },
+            {
+              "id": "geo_des_002",
+              "name": "Медовик",
+              "price": 390,
+              "weight": "100/30 г"
+            },
+            {
+              "id": "geo_des_003",
+              "name": "Наполеон",
+              "price": 420,
+              "weight": "120 г"
+            },
+            {
+              "id": "geo_des_004",
+              "name": "Пеламуши",
+              "price": 380,
+              "weight": "150 г"
+            },
+            {
+              "id": "geo_des_005",
+              "name": "Ассорти профитролей",
+              "price": 420,
+              "weight": "200 г"
+            },
+            {
+              "id": "geo_des_006",
+              "name": "Тирамису",
+              "price": 480,
+              "weight": "130 г"
+            },
+            {
+              "id": "geo_des_007",
+              "name": "Шоколадный фондан с шариком мороженного",
+              "price": 480,
+              "weight": "85/60 г"
+            },
+            {
+              "id": "geo_des_008",
+              "name": "Классический чизкейк с ягодным соусом",
+              "price": 450,
+              "weight": "150/40 г"
+            }
+          ]
+        },
+        {
+          "id": "sauces",
+          "title": "Соусы",
+          "items": [
+            {
+              "id": "geo_sauce_001",
+              "name": "Аджика",
+              "price": 90
+            },
+            {
+              "id": "geo_sauce_002",
+              "name": "Горчица",
+              "price": 100
+            },
+            {
+              "id": "geo_sauce_003",
+              "name": "Кетчуп",
+              "price": 100
+            },
+            {
+              "id": "geo_sauce_004",
+              "name": "Майонез",
+              "price": 100
+            },
+            {
+              "id": "geo_sauce_005",
+              "name": "Мацони",
+              "price": 90
+            },
+            {
+              "id": "geo_sauce_006",
+              "name": "Сацибели",
+              "price": 90
+            },
+            {
+              "id": "geo_sauce_007",
+              "name": "Сметана",
+              "price": 90
+            },
+            {
+              "id": "geo_sauce_008",
+              "name": "Сметана с чесноком",
+              "price": 90
+            },
+            {
+              "id": "geo_sauce_009",
+              "name": "Ткемали зеленый",
+              "price": 90
+            },
+            {
+              "id": "geo_sauce_010",
+              "name": "Уксус",
+              "price": 100
+            },
+            {
+              "id": "geo_sauce_011",
+              "name": "Хрен",
+              "price": 100
+            }
+          ]
+        },
+        {
+          "id": "extra",
+          "title": "Дополнительно",
+          "items": [
+            {
+              "id": "geo_extra_001",
+              "name": "Грецкие орехи",
+              "price": 100,
+              "weight": "30 г"
+            },
+            {
+              "id": "geo_extra_002",
+              "name": "Зелень",
+              "price": 100,
+              "weight": "50 г"
+            },
+            {
+              "id": "geo_extra_003",
+              "name": "Перец острый зеленый",
+              "price": 100,
+              "weight": "30 г"
+            },
+            {
+              "id": "geo_extra_004",
+              "name": "Сыр имерули",
+              "price": 150,
+              "weight": "100 г"
+            },
+            {
+              "id": "geo_extra_005",
+              "name": "Сыр сулугуни",
+              "price": 150,
+              "weight": "100 г"
+            },
+            {
+              "id": "geo_extra_006",
+              "name": "Яйцо куриное",
+              "price": 50,
+              "weight": "1 шт"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "europe",
+      "title": "Европейская кухня",
+      "categories": [
+        {
+          "id": "cold_snacks",
+          "title": "Холодные закуски",
+          "items": [
+            {
+              "id": "eu_csn_001",
+              "name": "Тартар из говядины",
+              "price": 650,
+              "weight": "180 г"
+            },
+            {
+              "id": "eu_csn_002",
+              "name": "Татаки тунец",
+              "price": 1200,
+              "weight": "150 г"
+            },
+            {
+              "id": "eu_csn_003",
+              "name": "Брускетта со страчетеллой и мортаделлой",
+              "price": 390,
+              "weight": "150 г"
+            },
+            {
+              "id": "eu_csn_004",
+              "name": "Брускетта с вялеными томатами",
+              "price": 390,
+              "weight": "125 г"
+            },
+            {
+              "id": "eu_csn_005",
+              "name": "Брускетта с лососем слабой соли",
+              "price": 410,
+              "weight": "120 г"
+            },
+            {
+              "id": "eu_csn_006",
+              "name": "Паштет из куриной печени",
+              "price": 390,
+              "weight": "120 г"
+            },
+            {
+              "id": "eu_csn_007",
+              "name": "Вителло тоннато",
+              "price": 790,
+              "weight": "160 г"
+            },
+            {
+              "id": "eu_csn_008",
+              "name": "Сельдь собственного посола с картофелем",
+              "price": 640,
+              "weight": "235 г"
+            },
+            {
+              "id": "eu_csn_009",
+              "name": "Грузди со сметаной",
+              "price": 790,
+              "weight": "170 г"
+            }
+          ]
+        },
+        {
+          "id": "salads",
+          "title": "Салаты",
+          "items": [
+            {
+              "id": "eu_sal_001",
+              "name": "Салат цезарь с курицей",
+              "price": 690,
+              "weight": "245 г"
+            },
+            {
+              "id": "eu_sal_002",
+              "name": "Салат цезарь с креветками",
+              "price": 790,
+              "weight": "235 г"
+            },
+            {
+              "id": "eu_sal_003",
+              "name": "Салат нисуаз",
+              "price": 940,
+              "weight": "210 г"
+            },
+            {
+              "id": "eu_sal_004",
+              "name": "Буратта с томатами и рукколой",
+              "price": 1150,
+              "weight": "300 г"
+            },
+            {
+              "id": "eu_sal_005",
+              "name": "Салат с ростбифом",
+              "price": 790,
+              "weight": "175 г"
+            },
+            {
+              "id": "eu_sal_006",
+              "name": "Зеленый салат",
+              "price": 530,
+              "weight": "175 г"
+            },
+            {
+              "id": "eu_sal_007",
+              "name": "Греческий салат",
+              "price": 740,
+              "weight": "250 г"
+            }
+          ]
+        },
+        {
+          "id": "soups",
+          "title": "Супы",
+          "items": [
+            {
+              "id": "eu_soup_001",
+              "name": "Суп куриный (с тортеллини)",
+              "price": 540,
+              "weight": "275 г"
+            },
+            {
+              "id": "eu_soup_002",
+              "name": "Грибной",
+              "price": 540,
+              "weight": "330 г"
+            },
+            {
+              "id": "eu_soup_003",
+              "name": "Тыквенный",
+              "price": 540,
+              "weight": "300 г"
+            },
+            {
+              "id": "eu_soup_004",
+              "name": "Говяжий бульон с ньокками",
+              "price": 540,
+              "weight": "400 г"
+            }
+          ]
+        },
+        {
+          "id": "hot",
+          "title": "Горячее",
+          "items": [
+            {
+              "id": "eu_hot_001",
+              "name": "Стейк рибай с соусом демиглас",
+              "price": 6200,
+              "weight": "300 г"
+            },
+            {
+              "id": "eu_hot_002",
+              "name": "Стриплойн стейк с соусом демиглас",
+              "price": 2900,
+              "weight": "300 г"
+            },
+            {
+              "id": "eu_hot_003",
+              "name": "Ризотто с грибами и спаржей",
+              "price": 1100,
+              "weight": "270 г"
+            },
+            {
+              "id": "eu_hot_004",
+              "name": "Стейк из лосося с голландским соусом",
+              "price": 1100,
+              "weight": "140 г"
+            },
+            {
+              "id": "eu_hot_005",
+              "name": "Стейк из палтуса",
+              "price": 1200,
+              "weight": "300 г"
+            },
+            {
+              "id": "eu_hot_006",
+              "name": "Утиная ножка конфи",
+              "price": 1200,
+              "weight": "300 г"
+            },
+            {
+              "id": "eu_hot_007",
+              "name": "Ригатони карбонара",
+              "price": 690,
+              "weight": "230 г"
+            },
+            {
+              "id": "eu_hot_008",
+              "name": "Паста с креветками",
+              "price": 990,
+              "weight": "260 г"
+            },
+            {
+              "id": "eu_hot_009",
+              "name": "Паста с вонголе",
+              "price": 990,
+              "weight": "250 г"
+            },
+            {
+              "id": "eu_hot_010",
+              "name": "Спагетти болоньезе",
+              "price": 690,
+              "weight": "250 г"
+            },
+            {
+              "id": "eu_hot_011",
+              "name": "Бургер с говядиной",
+              "price": 790,
+              "weight": "330 г"
+            },
+            {
+              "id": "eu_hot_012",
+              "name": "Бургер с курицей",
+              "price": 740,
+              "weight": "320 г"
+            },
+            {
+              "id": "eu_hot_013",
+              "name": "Ньокки 4 сыра",
+              "price": 690,
+              "weight": "230 г"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/delivery.js?v=8"></script>
+</body>
+
+</html>
