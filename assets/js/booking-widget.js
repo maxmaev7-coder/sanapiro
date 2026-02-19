@@ -10,8 +10,11 @@
 (function () {
   'use strict';
 
-  // Прокси через serve.py, чтобы обойти CORS-ограничение ReMarked API
-  const REMARKED_API = '/api/remarked';
+  // Локально используем прокси serve.py, на GitHub Pages — прямой API ReMarked.
+  const REMARKED_API =
+    location.hostname === '127.0.0.1' || location.hostname === 'localhost'
+      ? '/api/remarked'
+      : 'https://app.remarked.ru/api/v1/ApiReservesWidget';
   const POINT_ID = 548548;
   const REST_TIME_ZONE = 'Europe/Moscow';
   const RESERVE_DURATION_HOURS = 3;
